@@ -8,8 +8,8 @@ function ProductCard(props) {
     return (
         <div className="card">
             {prod.map((product) => (
-                <Link href="/products/[slug]" as={`/products/${slug(product.name)}-${product.id}`}>
-            <div key={product.id}>
+                <Link key={product.id} href="/products/[slug]" as={`/products/${slug(product.name)}-${product.id}`}>
+            <div >
             {product.name.slice(11).toUpperCase()}
             <img 
             src={`https://` + product.images[0].url}/>
