@@ -5,14 +5,14 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Basket from "../components/Basket"
 
-export default function Home(posts) {
+export default function Home(props) {
   const [basket,setBasket] = useState(null)
   return (
-    <div className="hello">
+    <div className="app">
       <Header />
       <h3>I am building an e-commerce app</h3>
       <div className="try products">
-        <ProductCard posts={posts} basket={basket} />
+        <ProductCard props={props} basket={basket} />
       </div>
       <Basket />
       <Footer />
@@ -30,11 +30,17 @@ export async function getStaticProps() {
     },
   })
     const posts = await res.json()
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
+
+    const cat = await fetch("https://asos2.p.rapidapi.com/categories/list?country=US&lang=en-US", {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": "104a0a8669mshc29e3cbebbb191bp1aba90jsn839a47e91ece",
+        "x-rapidapi-host": "asos2.p.rapidapi.com"
+      }
+    })
+    const categories = await cat.json()
+
   return {
-    props: {
-      posts,
-    },
+    props: {posts , categories},
   }
 }

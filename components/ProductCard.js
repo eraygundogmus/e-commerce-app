@@ -1,8 +1,8 @@
 import React from 'react'
 
 function ProductCard(props) {
-    const prod = props.posts.posts.products
-    console.log(props)
+    const prod = props.props.posts.products
+    const categ = props.props.categories
     return (
         <div className="card">
             {prod.map((product) => (
