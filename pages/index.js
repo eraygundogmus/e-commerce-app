@@ -1,13 +1,14 @@
+import React from "react"
 import ProductCard from "../components/ProductCard"
+import { useState } from "react";
 
 export default function Home(posts) {
-  const prod = posts.posts.products
-  console.log(prod)
+  const [basket,setBasket] = useState(null)
   return (
     <div className="hello">
       <h1>hello world</h1>
       <div className="try products">
-        <ProductCard props={posts}/>
+        <ProductCard posts={posts} basket={basket} />
       </div>
     </div>
   )
@@ -23,7 +24,6 @@ export async function getStaticProps() {
     },
   })
     const posts = await res.json()
-    console.log(posts)
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {

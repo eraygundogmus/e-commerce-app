@@ -1,11 +1,12 @@
 import React from 'react'
 
 function ProductCard(props) {
-    const prod = props.props.posts.products
+    const prod = props.posts.posts.products
+    console.log(props)
     return (
         <div className="card">
             {prod.map((product) => (
-            <div>
+            <div key={product.id}>
             {product.name}
             <img 
             src={`https://` + product.images[0].url}/>
