@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from "./Navbar"
 
 function Header() {
     return (
         <div className="">
-            I am header
+            <div className="header_left">
+                <span> LOGO HERE</span>
+            </div>
+            <Navbar />
         </div>
     )
 }

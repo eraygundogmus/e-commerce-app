@@ -1,18 +1,21 @@
 import React from 'react'
+import Link from 'next/link'
 
 function ProductCard(props) {
     const prod = props.props.posts.products
     const categ = props.props.categories
+    console.log(prod)
     return (
         <div className="card">
             {prod.map((product) => (
+                <Link href="/products/[id]" as={`/products/${product.id}`}>
             <div key={product.id}>
-            {product.name}
+            {product.name.slice(11).toUpperCase()}
             <img 
             src={`https://` + product.images[0].url}/>
             <h3> Price: {product.price.current.text}</h3>
             <h3> Left: {product.price.current.value}</h3>
-            </div>))}
+            </div></Link>))}
         </div>
     )
 }

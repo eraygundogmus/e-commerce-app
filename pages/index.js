@@ -11,9 +11,7 @@ export default function Home(props) {
     <div className="app">
       <Header />
       <h3>I am building an e-commerce app</h3>
-      <div className="try products">
-        <ProductCard props={props} basket={basket} />
-      </div>
+       <ProductCard props={props} basket={basket} />
       <Basket />
       <Footer />
     </div>

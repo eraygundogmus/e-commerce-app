@@ -2,8 +2,21 @@ import React from 'react'
 
 function Navbar() {
     return (
-        <div>
-            I am navbar component. I'll be in Header and Footer
+        <div className="navbar">
+            <ul>
+                <li>
+                    Home
+                </li>
+                <li>
+                    Products
+                </li>
+                <li>
+                    About
+                </li>
+                <li>
+                    Categories
+                </li>
+            </ul>
         </div>
     )
 }
