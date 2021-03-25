@@ -10,8 +10,10 @@ export default function Home(props) {
   return (
     <div className="app">
       <Header />
+      <div className="hero">
        <ProductCard props={props} basket={basket} />
       <Basket />
+      </div>
       <Footer />
     </div>
   )

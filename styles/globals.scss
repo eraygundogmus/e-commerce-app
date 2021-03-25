@@ -22,6 +22,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 3%;
   }
   .header_left {
     margin-left: 3%;
@@ -45,7 +46,45 @@ a {
 
 .card_container {
   display: flex;
-  max-width: 100% !important;
-  margin-left: 1%;
-  margin-top: 3%;
+  max-width: 70% !important;
+  margin-left: 3%;
+  margin-right: 1%;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+}
+.basket {
+  justify-content: center;
+  max-width: 27%;
+  border: 1px solid #9096bb5d;
+  border-radius: 12px;
+  box-shadow: 1px 1px #f2f2f2;
+  color: #3f51b5;
+  padding: 10px;
+  max-height: 750px;
+  .basket_header {
+    text-align: center;
+    .icon {
+      display: flex;
+      height: 30px;
+      width: 100%;
+    }
+    h4 {
+      font-weight: 500;
+      margin: 3px;
+    }
+  }
+  .product-box {
+    margin-top: 30px;
+    border: 1px solid #9096bb5d;
+    display: flex;
+    justify-content: space-between;
+    img {
+      height: 70px;
+      border: 1px solid #9096bb5d;
+      float: right;
+    }
+  }
 }

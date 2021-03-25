@@ -13,9 +13,10 @@ import Grid from '@material-ui/core/Grid';
 
 
 
+
 const useStyles = makeStyles({
     root: {
-      maxWidth: 300,
+      maxWidth: 260,
     },
   });
 
@@ -26,32 +27,33 @@ function ProductCard(props) {
     const classes = useStyles();
     return (
         <div className="card_container">
-        <Grid container spacing={4}>
+        <Grid container   
+        direction="row"
+        justify="flex-start"
+        alignItems="baseline" 
+        spacing={2}>
                 {prod.map((product) => (
                 <Link key={product.id} href="/products/[slug]" as={`/products/${slug(product.name)}-${product.id}`}>
-                <Grid item xs={2}>
+                <Grid item xs={3}>
                 <Card className={classes.root}>
                     <CardActionArea>
                         <CardMedia
                         component="img"
-                        alt="Contemplative Reptile"
-                        height="340"
+                        alt={product.name.slice(11)}
+                        height="350"
                         image={`https://` + product.images[0].url}
-                        title="Contemplative Reptile"
+                        title={product.name.slice(11)}
                         />
                         <CardContent>
-                        <Typography gutterBottom variant="h6" component="h3">                            
-                        {product.name.slice(11).toUpperCase()}
+                        <Typography gutterBottom variant="p" component="h3">                            
+                        {`${product.name.slice(11).toUpperCase().slice(0,35)}...`}
                         </Typography>
     {/*                 <Typography variant="body2" color="textSecondary" component="p">
                         Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
                         across all continents except Antarctica
                         </Typography> */}
                         <Typography variant="body2" color="textSecondary" component="p">
-                        {product.price.current.text}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                        Left: {product.price.current.value}
+                        {product.price.current.text}                         Left: {product.price.current.value}
                         </Typography>
                         </CardContent>
                         </CardActionArea>
@@ -60,7 +62,7 @@ function ProductCard(props) {
                         Add to basket
                         </Button>
                         <Button size="small" color="primary">
-                        Learn More
+                        Details
                         </Button>
                         </CardActions>
                 </Card>
