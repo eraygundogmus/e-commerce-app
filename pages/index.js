@@ -1,5 +1,3 @@
-import faker from "faker"
-
 export default function Home(posts) {
   const prod = posts.posts.products
   console.log(prod)
