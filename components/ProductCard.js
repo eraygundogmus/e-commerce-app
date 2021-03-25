@@ -1,14 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
+import slug from "slug"
 
 function ProductCard(props) {
     const prod = props.props.posts.products
     const categ = props.props.categories
-    console.log(prod)
     return (
         <div className="card">
             {prod.map((product) => (
-                <Link href="/products/[id]" as={`/products/${product.id}`}>
+                <Link href="/products/[slug]" as={`/products/${slug(product.name)}-${product.id}`}>
             <div key={product.id}>
             {product.name.slice(11).toUpperCase()}
             <img 

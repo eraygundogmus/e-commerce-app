@@ -1,9 +1,8 @@
 import React from "react"
 import { useState } from "react";
-
+import slug from "slug";
 
 export default function Products(props) {
-    console.log(props.post)
   return (
     <div className="app">
       <h3>I am building an e-commerce app</h3>
@@ -26,7 +25,7 @@ export async function getStaticPaths() {
     
     return {
     paths: posts.products.map(product => {
-        return { params : { id: product.id.toString() }}
+        return { params : { slug: `${slug(product.name)}-${product.id}` }}
     }),
       fallback: false
     };
@@ -34,7 +33,8 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps(params) {
-    const res = await fetch(`https://asos2.p.rapidapi.com/products/detail?id=${params.params.id}&sizeSchema=US&store=US&lang=en-US&currency=USD`, 
+    const id = params.params.slug.split("-").slice(-1)[0]
+    const res = await fetch(`https://asos2.p.rapidapi.com/products/detail?id=${id}&sizeSchema=US&store=US&lang=en-US&currency=USD`, 
     {method: 'GET',
     headers:{
       "x-rapidapi-key": "104a0a8669mshc29e3cbebbb191bp1aba90jsn839a47e91ece",
