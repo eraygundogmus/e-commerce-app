@@ -13,7 +13,6 @@ function ProductCard(props) {
             <h3> Price: {product.price.current.text}</h3>
             <h3> Left: {product.price.current.value}</h3>
             </div>))}
-            
         </div>
     )
 }
