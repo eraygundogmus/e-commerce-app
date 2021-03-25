@@ -10,7 +10,6 @@ export default function Home(props) {
   return (
     <div className="app">
       <Header />
-      <h3>I am building an e-commerce app</h3>
        <ProductCard props={props} basket={basket} />
       <Basket />
       <Footer />
@@ -29,16 +28,16 @@ export async function getStaticProps() {
   })
     const posts = await res.json()
 
-    const cat = await fetch("https://asos2.p.rapidapi.com/categories/list?country=US&lang=en-US", {
+/*     const cat = await fetch("https://asos2.p.rapidapi.com/categories/list?country=US&lang=en-US", {
       "method": "GET",
       "headers": {
         "x-rapidapi-key": "104a0a8669mshc29e3cbebbb191bp1aba90jsn839a47e91ece",
         "x-rapidapi-host": "asos2.p.rapidapi.com"
       }
     })
-    const categories = await cat.json()
+    const categories = await cat.json() */
 
   return {
-    props: {posts , categories},
+    props: {posts , /* categories */},
   }
 }

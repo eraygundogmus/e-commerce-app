@@ -14,3 +14,38 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.app {
+  .header {
+    background-color: #3f51b5;
+    color: #eeeeee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header_left {
+    margin-left: 3%;
+
+    span {
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+  }
+  .navbar {
+    margin-right: 3%;
+    ul {
+      list-style-type: none;
+      display: inline-flex;
+    }
+    li {
+      padding: 15px;
+    }
+  }
+}
+
+.card_container {
+  display: flex;
+  max-width: 100% !important;
+  margin-left: 1%;
+  margin-top: 3%;
+}
