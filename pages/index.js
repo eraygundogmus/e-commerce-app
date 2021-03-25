@@ -1,15 +1,21 @@
 import React from "react"
 import ProductCard from "../components/ProductCard"
 import { useState } from "react";
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import Basket from "../components/Basket"
 
 export default function Home(posts) {
   const [basket,setBasket] = useState(null)
   return (
     <div className="hello">
-      <h1>hello world</h1>
+      <Header />
+      <h3>I am building an e-commerce app</h3>
       <div className="try products">
         <ProductCard posts={posts} basket={basket} />
       </div>
+      <Basket />
+      <Footer />
     </div>
   )
 }
