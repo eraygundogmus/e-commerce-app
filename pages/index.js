@@ -1,3 +1,5 @@
+import ProductCard from "../components/ProductCard"
+
 export default function Home(posts) {
   const prod = posts.posts.products
   console.log(prod)
@@ -5,10 +7,7 @@ export default function Home(posts) {
     <div className="hello">
       <h1>hello world</h1>
       <div className="try products">
-        {prod.map((e) => (
-        <div>
-        {e.name}          
-        </div>))}
+        <ProductCard props={posts}/>
       </div>
     </div>
   )

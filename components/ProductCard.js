@@ -1,0 +1,20 @@
+import React from 'react'
+
+function ProductCard(props) {
+    const prod = props.props.posts.products
+    return (
+        <div className="card">
+            {prod.map((product) => (
+            <div>
+            {product.name}
+            <img 
+            src={`https://` + product.images[0].url}/>
+            <h3> Price: {product.price.current.text}</h3>
+            <h3> Left: {product.price.current.value}</h3>
+            </div>))}
+            
+        </div>
+    )
+}
+
+export default ProductCard
