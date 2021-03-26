@@ -27,8 +27,8 @@ export default function Products(props) {
   const classes = useStyles();
   const [size, setSize] = React.useState('');
   const [open, setOpen] = React.useState(false);
-
-  console.log(props.post)
+  const mySetBask = useContext(myContext).setBask
+  const myBask = useContext(myContext).bask
 
 
   const handleChange = (event) => {
@@ -43,43 +43,45 @@ export default function Products(props) {
     setOpen(true);
   };
 
-  const basket = useContext(myContext)
+  const name = props.post.name.slice(11).toUpperCase()
+
+  const onClickHandler = (event) => {
+    size ? mySetBask(myBask.concat({ name: name})) : console.log("you need to pick a size");
+  }
+
 
   return (
     <div className="app">
       <Header/>
       <div className="hero">
-      <SingleProduct props={props} />
-      <div className="product-info">
-      <h4>{props.post.name.slice(11).toUpperCase()}</h4>
-      <h3>{props.post.price.current.text}</h3>
-      <p>{props.post.info.aboutMe  ? props.post.info.aboutMe.replace(/(<([^>]+)>)/gi, "") : null}</p>
-      <p>{props.post.info.sizeAndFit ? props.post.info.sizeAndFit.replace(/(<([^>]+)>)/gi, "") : null}</p>
-
-
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Size  </InputLabel>
-        <Select
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
-          open={open}
-          onClose={handleClose}
-          onOpen={handleOpen}
-          value={size}
-          onChange={handleChange}
-        >
-        {props.post.variants.map((e) => (<MenuItem key={e.id} value={e.brandSize}>{e.brandSize}</MenuItem>))}
-        </Select>
-      </FormControl>
-      <div className="cart_button">
-      <Button variant="contained" color="primary">
-        Add to cart
-      </Button>
+        <SingleProduct props={props} />
+          <div className="product-info">
+            <h4>{props.post.name.slice(11).toUpperCase()}</h4>
+            <h3>{props.post.price.current.text}</h3>
+            <p>{props.post.info.aboutMe  ? props.post.info.aboutMe.replace(/(<([^>]+)>)/gi, "") : null}</p>
+            <p>{props.post.info.sizeAndFit ? props.post.info.sizeAndFit.replace(/(<([^>]+)>)/gi, "") : null}</p>
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-controlled-open-select-label">Size  </InputLabel>
+              <Select
+                labelId="demo-controlled-open-select-label"
+                id="demo-controlled-open-select"
+                open={open}
+                onClose={handleClose}
+                onOpen={handleOpen}
+                value={size}
+                onChange={handleChange}
+              >
+              {props.post.variants.map((e) => (<MenuItem key={e.id} value={e.brandSize}>{e.brandSize}</MenuItem>))}
+              </Select>
+            </FormControl>
+            <div className="cart_button">
+            <Button onClick={onClickHandler} variant="contained" color="primary">
+              Add to cart
+            </Button>
+            </div>
+          </div>
+        <Basket/>
       </div>
-      </div>
-      <Basket/>
-      </div>
-
     </div>
   )
 }

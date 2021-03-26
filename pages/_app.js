@@ -1,12 +1,13 @@
 import '../styles/globals.scss'
-import React , { createContext} from "react"
+import React , { createContext, useState } from "react"
 
 
 export const myContext = React.createContext()
-const bask = [{name: "name"}]
 
 function MyApp({ Component, pageProps }) {
-  return <myContext.Provider value={bask}><Component {...pageProps} /></myContext.Provider>
+  const [bask, setBask ] = useState([{name: "name"}])
+
+  return <myContext.Provider value={{bask, setBask}}><Component {...pageProps} /></myContext.Provider>
 }
 
 export default MyApp

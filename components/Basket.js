@@ -4,8 +4,7 @@ import { myContext } from "../pages/_app"
 
 
 function Basket() {
-    const basket = useContext(myContext)
-/*     console.log(basket) */
+    const basket = useContext(myContext).bask
     return (
         <div className="basket">
             <div className="basket_header">
@@ -18,8 +17,8 @@ function Basket() {
                 basket.map((cart) => 
                 (<div>
                     <p>{cart.name}</p>
-{/*                     <img src={cart.img}
-                    alt=""/> */}
+                     <img src={cart.img}
+                    alt=""/> 
                 </div>)
                 )}
             </div>
