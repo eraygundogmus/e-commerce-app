@@ -33,11 +33,12 @@ export default function Products(props) {
   const mySetBask = contx.setBask
   const myBask = contx.bask
   const [image, setImage] = useState()
-  const [myProps, setProps] = useState()
+  const [price, setPrice] = useState()
 
   useEffect(() => {
-    setProps(props)
-  },[])
+    console.log(price)
+    return setPrice(props.price)
+  }, [])
 
 
 
@@ -68,8 +69,8 @@ export default function Products(props) {
   const onClickHandler = (event) => {
     const img = image
     const name = data
-    const price = props.post.price.current ? props.post.price.current.text : null
-    size ? mySetBask(myBask.concat({ name: name, img: img, size: size, price: price })) : console.log("you need to pick a size");
+    const prc = price
+    size ? mySetBask(myBask.concat({ name: name, img: img, size: size, price: prc })) : console.log("you need to pick a size");
   }
 
 
@@ -80,7 +81,7 @@ export default function Products(props) {
         <SingleProduct props={props} />
           <div className="product-info">
             <h4>{data}</h4>
-            <h3>{props.post.price.current ? props.post.price.current.text : null}</h3>
+            <h3>{price ? price : null}</h3>
             <p>{props.post.info.aboutMe  ? props.post.info.aboutMe.replace(/(<([^>]+)>)/gi, "") : null}</p>
             <p>{props.post.info.sizeAndFit ? props.post.info.sizeAndFit.replace(/(<([^>]+)>)/gi, "") : null}</p>
             <div>
@@ -116,7 +117,7 @@ export async function getStaticPaths() {
     const res = await fetch('https://asos2.p.rapidapi.com/products/list?store=2&categoryId=27871&limit=48&offset=0&currency=USD&sizeSchema=US&sort=freshness&lang=en-US&country=US', 
     {method: 'GET',
     headers:{
-      "x-rapidapi-key": "14caa9b1dfmshd63ef10b7f0284cp1d0e94jsnae451078aa47",
+      "x-rapidapi-key": "a77787af1bmsh38c40bb7f898fbfp14064ejsn7e1719f1fff4",
       "x-rapidapi-host": "asos2.p.rapidapi.com",
       "useQueryString": true
     },
@@ -134,21 +135,23 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps(params) {
+    await new Promise((resolve) => setTimeout(resolve,3000))
     const id = params.params.slug.split("-").slice(-1)[0]
     const res = await fetch(`https://asos2.p.rapidapi.com/products/detail?id=${id}&sizeSchema=US&store=US&lang=en-US&currency=USD`, 
     {method: 'GET',
     headers:{
-      "x-rapidapi-key": "14caa9b1dfmshd63ef10b7f0284cp1d0e94jsnae451078aa47",
+      "x-rapidapi-key": "a77787af1bmsh38c40bb7f898fbfp14064ejsn7e1719f1fff4",
       "x-rapidapi-host": "asos2.p.rapidapi.com",
     },
-  }).catch(err => {console.log(err)})
+  })
     const post = await res.json()
     const name =  post.name ? post.name.slice(11).toUpperCase() : null
     const imgURL = post.media ? post.media.images[0].url : null
     const img = `https://${imgURL}`
+    const price = post.price ? post.price.current.text : null
 
 
   return {
-    props: {post, name, img},
+    props: {post, name, img, price},
   }
 }
