@@ -20,26 +20,14 @@ a {
     background-color: #3f51b5;
     color: #eeeeee;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 3%;
-  }
-  .header_left {
-    margin-left: 3%;
-
+    height: 70px;
     span {
       font-size: 1.5em;
       font-weight: 700;
-    }
-  }
-  .navbar {
-    margin-right: 3%;
-    ul {
-      list-style-type: none;
-      display: inline-flex;
-    }
-    li {
-      padding: 15px;
+      cursor: pointer;
     }
   }
 }
@@ -68,6 +56,9 @@ a {
   position: relative;
   .payment {
     margin-top: 30px;
+    .payment_amount {
+      margin-bottom: 10px;
+    }
   }
 
   .basket_header {
@@ -104,17 +95,22 @@ a {
   display: flex;
   margin-left: 10px;
   margin-right: 10px;
+  border: 1px solid #9096bb5d;
+  border-radius: 12px;
+  box-shadow: 1px 1px #f2f2f2;
+  margin-bottom: 5px;
   color: #0d0d0d;
   .basket_item_name {
-    font-weight: 400;
+    font-weight: 500;
+    font-size: 13px;
   }
   .basket_item_img {
     width: 60px;
   }
   h3 {
-    margin: 10px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
+    color: rgb(27, 18, 18);
   }
 }
 .MuiIconButton-label {

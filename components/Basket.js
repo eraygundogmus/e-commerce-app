@@ -42,16 +42,15 @@ function Basket() {
                      {basket.length > 0 ? 
                      (
                      <div>
-                         <Button  variant="contained" color="primary">
-                        Payment
-                        </Button>
-                        <div>Total amount: $
+                        <div className="payment_amount">Total amount: $
                         {basket.reduce((current,next) => {
                             let currentNum = parseInt(next.price.replace(/^\D+/g, ''), 10);
-                            console.log('current', currentNum , 'next' ,next)
                             return current + currentNum
                         }, 0)}
                         </div>
+                         <Button  variant="contained" color="primary">
+                        Payment
+                        </Button>
                      </div>
                      ) : (
                      <Button  variant="contained" disabled>

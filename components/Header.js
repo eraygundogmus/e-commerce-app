@@ -1,15 +1,17 @@
 import React from 'react'
-import Navbar from "./Navbar"
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import Link from 'next/link'
+
 
 function Header() {
     return (
         <div className="header">
             <div className="header_left">
-                <span>
+                <Link href="/"><span>
                     <ShoppingBasketIcon fontSize="large"/></span>
+                </Link>
             </div>
-            <Navbar />
+
         </div>
     )
 }

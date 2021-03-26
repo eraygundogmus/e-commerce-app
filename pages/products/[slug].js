@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 140,
   },
 }));
 
@@ -95,7 +95,7 @@ export async function getStaticPaths() {
     const res = await fetch('https://asos2.p.rapidapi.com/products/list?store=2&categoryId=27871&limit=48&offset=0&currency=USD&sizeSchema=US&sort=freshness&lang=en-US&country=US', 
     {method: 'GET',
     headers:{
-      "x-rapidapi-key": "104a0a8669mshc29e3cbebbb191bp1aba90jsn839a47e91ece",
+      "x-rapidapi-key": "2c1cbff938msh5243e6f1bfc5e69p13753ajsn18e03b26e5dc",
       "x-rapidapi-host": "asos2.p.rapidapi.com",
       "useQueryString": true
     },
@@ -116,7 +116,7 @@ export async function getStaticProps(params) {
     const res = await fetch(`https://asos2.p.rapidapi.com/products/detail?id=${id}&sizeSchema=US&store=US&lang=en-US&currency=USD`, 
     {method: 'GET',
     headers:{
-      "x-rapidapi-key": "104a0a8669mshc29e3cbebbb191bp1aba90jsn839a47e91ece",
+      "x-rapidapi-key": "2c1cbff938msh5243e6f1bfc5e69p13753ajsn18e03b26e5dc",
       "x-rapidapi-host": "asos2.p.rapidapi.com",
       "useQueryString": true
     },
