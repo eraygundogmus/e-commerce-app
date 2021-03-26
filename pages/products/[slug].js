@@ -4,6 +4,7 @@ import slug from "slug";
 import Header from "../../components/Header"
 import Basket from "../../components/Basket"
 import { myContext } from "../_app"
+import SingleProduct from "../../components/SingleProduct"
 
 export default function Products(props) {
   const basket = useContext(myContext)
@@ -11,8 +12,11 @@ export default function Products(props) {
     <div className="app">
       <Header/>
       <div className="hero">
-        <h3>I am building an e-commerce app</h3>
-      <h4>{props.post.name}</h4>
+{/*       <h4>{props.post.name}</h4> */}
+      <SingleProduct props={props} />
+      <div className="product-info">
+                info
+      </div>
       <Basket/>
       </div>
 
