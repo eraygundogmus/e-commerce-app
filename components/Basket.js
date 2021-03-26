@@ -5,7 +5,7 @@ import { myContext } from "../pages/_app"
 
 function Basket() {
     const basket = useContext(myContext)
-    console.log(basket)
+/*     console.log(basket) */
     return (
         <div className="basket">
             <div className="basket_header">

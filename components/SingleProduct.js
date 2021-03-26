@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 function SingleProduct(props) {
     const images = props.props.post.media.images
-    console.log(images)
+/*     console.log(images) */
     return (
         <div className="singleproduct">
             <Carousel  thumbWidth="15%">

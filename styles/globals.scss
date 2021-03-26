@@ -91,3 +91,16 @@ a {
 .carousel-root {
   width: 500px;
 }
+
+.product-info {
+  padding-left: 70px;
+  width: 45%;
+  h4 {
+    font-weight: 500;
+  }
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    color: grey;
+  }
+}

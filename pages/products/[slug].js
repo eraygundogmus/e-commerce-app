@@ -5,17 +5,82 @@ import Header from "../../components/Header"
 import Basket from "../../components/Basket"
 import { myContext } from "../_app"
 import SingleProduct from "../../components/SingleProduct"
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 
 export default function Products(props) {
+  const classes = useStyles();
+  const [size, setSize] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+  console.log(props.post)
+
+
+  const handleChange = (event) => {
+    setSize(event.target.value);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   const basket = useContext(myContext)
+  const originalString = props.post.info.aboutMe
+  const strippedString = originalString.replace(/(<([^>]+)>)/gi, "");
+  const orgStr = props.post.info.sizeAndFit
+  const strStr = orgStr.replace(/(<([^>]+)>)/gi, "");
+
   return (
     <div className="app">
       <Header/>
       <div className="hero">
-{/*       <h4>{props.post.name}</h4> */}
       <SingleProduct props={props} />
       <div className="product-info">
-                info
+      <h4>{props.post.name.slice(11).toUpperCase()}</h4>
+      <h3>{props.post.price.current.text}</h3>
+      <p>{props.post.info.careInfo}</p>
+      <p>{strippedString}</p>
+      <p>{strStr}</p>
+
+
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">Size  </InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={size}
+          onChange={handleChange}
+        >
+        {props.post.variants.map((e) => (<MenuItem key={e.id} value={e.brandSize}>{e.brandSize}</MenuItem>))}
+        </Select>
+      </FormControl>
+      <div className="cart_button">
+      <Button variant="contained" color="primary">
+        Add to cart
+      </Button>
+      </div>
       </div>
       <Basket/>
       </div>
