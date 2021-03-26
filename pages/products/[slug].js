@@ -62,8 +62,9 @@ export default function Products(props) {
             <h3>{props.post.price.current.text}</h3>
             <p>{props.post.info.aboutMe  ? props.post.info.aboutMe.replace(/(<([^>]+)>)/gi, "") : null}</p>
             <p>{props.post.info.sizeAndFit ? props.post.info.sizeAndFit.replace(/(<([^>]+)>)/gi, "") : null}</p>
+            <div>
             <FormControl className={classes.formControl}>
-              <InputLabel id="demo-controlled-open-select-label">Size  </InputLabel>
+              <InputLabel id="demo-controlled-open-select-label">Size</InputLabel>
               <Select
                 labelId="demo-controlled-open-select-label"
                 id="demo-controlled-open-select"
@@ -76,6 +77,7 @@ export default function Products(props) {
               {props.post.variants.map((e) => (<MenuItem key={e.id} value={e.brandSize}>{e.brandSize}</MenuItem>))}
               </Select>
             </FormControl>
+            </div>
             <div className="cart_button">
             <Button onClick={onClickHandler} variant="contained" color="primary">
               Add to cart

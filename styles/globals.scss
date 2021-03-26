@@ -57,13 +57,19 @@ a {
 }
 .basket {
   justify-content: center;
-  max-width: 27%;
+  overflow-y: scroll;
+  max-width: 20%;
   border: 1px solid #9096bb5d;
   border-radius: 12px;
   box-shadow: 1px 1px #f2f2f2;
   color: #3f51b5;
   padding: 10px;
   max-height: 750px;
+  position: relative;
+  .payment {
+    margin-top: 30px;
+  }
+
   .basket_header {
     text-align: center;
 
@@ -100,7 +106,7 @@ a {
   margin-right: 10px;
   color: #0d0d0d;
   .basket_item_name {
-    font-weight: 500;
+    font-weight: 400;
   }
   .basket_item_img {
     width: 60px;

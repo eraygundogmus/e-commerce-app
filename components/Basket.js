@@ -3,6 +3,7 @@ import StorefrontIcon from '@material-ui/icons/Storefront';
 import { myContext } from "../pages/_app"
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -23,7 +24,7 @@ function Basket() {
                 <div className="icon">
                     <StorefrontIcon className="icon" fontSize="large"/> 
                 </div>
-                    <h4>Your Cart</h4>
+                    <h4>Shopping Cart</h4>
                 {basket.length == 0 ? 
                 <div><p> Your cart is empty</p> </div> : 
                 basket.map((cart, index) => 
@@ -37,6 +38,15 @@ function Basket() {
                     </IconButton>
                 </div>)
                 )}
+                 <div className="payment">
+                     {basket.length > 0 ? 
+                     (<Button  variant="contained" color="primary">
+                     Payment
+                     </Button>) : (<Button  variant="contained" disabled>
+                     Payment
+                     </Button>)}
+
+                </div>
             </div>
         </div>
     )
