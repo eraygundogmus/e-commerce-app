@@ -8,20 +8,15 @@ import { myContext } from "./_app"
 
 
 
-
-
-
 export default function Home(props) {
-  const [basket,setBasket] = useState([])
-  const deger = useContext(myContext)
-  console.log(deger)
+  const basket = useContext(myContext)
 
   return (
     <div className="app">
       <Header />
       <div className="hero">
-       <ProductCard props={props} basket={basket} />
-      <Basket basket={basket} />
+       <ProductCard props={props} />
+      <Basket/>
       </div>
       <Footer />
     </div>

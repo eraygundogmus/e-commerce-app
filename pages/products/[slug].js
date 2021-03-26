@@ -1,18 +1,19 @@
 import React from "react"
-import { useState } from "react";
+import { useContext } from "react";
 import slug from "slug";
 import Header from "../../components/Header"
 import Basket from "../../components/Basket"
+import { myContext } from "../_app"
 
 export default function Products(props) {
-  console.log(props)
+  const basket = useContext(myContext)
   return (
     <div className="app">
       <Header/>
       <div className="hero">
         <h3>I am building an e-commerce app</h3>
       <h4>{props.post.name}</h4>
-      <Basket basket={props.basket}/>
+      <Basket/>
       </div>
 
     </div>
