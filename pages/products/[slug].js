@@ -29,6 +29,8 @@ export default function Products(props) {
   const [open, setOpen] = React.useState(false);
   const mySetBask = useContext(myContext).setBask
   const myBask = useContext(myContext).bask
+  const img = props.post.media.images[1].url
+  const imgURL = `https://${img}`
 
 
   const handleChange = (event) => {
@@ -46,7 +48,7 @@ export default function Products(props) {
   const name = props.post.name.slice(11).toUpperCase()
 
   const onClickHandler = (event) => {
-    size ? mySetBask(myBask.concat({ name: name})) : console.log("you need to pick a size");
+    size ? mySetBask(myBask.concat({ name: name, img: imgURL, size: size, price: props.post.price.current.text })) : console.log("you need to pick a size");
   }
 
 

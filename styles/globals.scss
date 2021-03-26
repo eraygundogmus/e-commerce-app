@@ -66,6 +66,7 @@ a {
   max-height: 750px;
   .basket_header {
     text-align: center;
+
     .icon {
       display: flex;
       height: 30px;
@@ -74,6 +75,7 @@ a {
     h4 {
       font-weight: 500;
       margin: 3px;
+      margin-bottom: 20px;
     }
   }
   .product-box {
@@ -90,6 +92,27 @@ a {
 }
 .carousel-root {
   width: 500px;
+}
+
+.basket_item {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #0d0d0d;
+  .basket_item_name {
+    font-weight: 500;
+  }
+  .basket_item_img {
+    width: 60px;
+  }
+  h3 {
+    margin: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+.MuiIconButton-label {
+  pointer-events: none;
 }
 
 .product-info {
