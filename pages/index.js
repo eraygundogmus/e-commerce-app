@@ -6,13 +6,15 @@ import Footer from "../components/Footer"
 import Basket from "../components/Basket"
 
 export default function Home(props) {
-  const [basket,setBasket] = useState(null)
+  const [basket,setBasket] = useState([])
+
+
   return (
     <div className="app">
       <Header />
       <div className="hero">
        <ProductCard props={props} basket={basket} />
-      <Basket />
+      <Basket basket={basket} />
       </div>
       <Footer />
     </div>

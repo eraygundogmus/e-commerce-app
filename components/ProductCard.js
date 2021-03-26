@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect }from 'react'
 import Link from 'next/link'
 import slug from "slug"
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,7 +24,10 @@ const useStyles = makeStyles({
 function ProductCard(props) {
     const prod = props.props.posts.products
     const categ = props.props.categories
+    console.log(props)
     const classes = useStyles();
+
+
     return (
         <div className="card_container">
         <Grid container   
@@ -45,7 +48,7 @@ function ProductCard(props) {
                         title={product.name.slice(11)}
                         />
                         <CardContent>
-                        <Typography gutterBottom variant="p" component="h3">                            
+                        <Typography gutterBottom variant="subtitle2" component="h3">                            
                         {`${product.name.slice(11).toUpperCase().slice(0,35)}...`}
                         </Typography>
     {/*                 <Typography variant="body2" color="textSecondary" component="p">
