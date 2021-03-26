@@ -44,10 +44,6 @@ export default function Products(props) {
   };
 
   const basket = useContext(myContext)
-  const originalString = props.post.info.aboutMe
-  const strippedString = originalString.replace(/(<([^>]+)>)/gi, "");
-  const orgStr = props.post.info.sizeAndFit
-  const strStr = orgStr.replace(/(<([^>]+)>)/gi, "");
 
   return (
     <div className="app">
@@ -57,9 +53,8 @@ export default function Products(props) {
       <div className="product-info">
       <h4>{props.post.name.slice(11).toUpperCase()}</h4>
       <h3>{props.post.price.current.text}</h3>
-      <p>{props.post.info.careInfo}</p>
-      <p>{strippedString}</p>
-      <p>{strStr}</p>
+      <p>{props.post.info.aboutMe  ? props.post.info.aboutMe.replace(/(<([^>]+)>)/gi, "") : null}</p>
+      <p>{props.post.info.sizeAndFit ? props.post.info.sizeAndFit.replace(/(<([^>]+)>)/gi, "") : null}</p>
 
 
       <FormControl className={classes.formControl}>
