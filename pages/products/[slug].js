@@ -1,9 +1,9 @@
 import React from "react"
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import slug from "slug";
 import Header from "../../components/Header"
 import Basket from "../../components/Basket"
-import { myContext } from "../_app"
+import { myContext } from "../../components/context"
 import SingleProduct from "../../components/SingleProduct"
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -29,9 +29,11 @@ export default function Products(props) {
   const [open, setOpen] = React.useState(false);
   const mySetBask = useContext(myContext).setBask
   const myBask = useContext(myContext).bask
-  const img = props.post.media.images[1].url
-  const imgURL = `https://${img}`
+  const [data, setData] = useState()
 
+  useEffect(() => {
+    setData(props.post)
+  }, [])
 
   const handleChange = (event) => {
     setSize(event.target.value);
@@ -45,10 +47,13 @@ export default function Products(props) {
     setOpen(true);
   };
 
-  const name = props.post.name.slice(11).toUpperCase()
+
 
   const onClickHandler = (event) => {
-    size ? mySetBask(myBask.concat({ name: name, img: imgURL, size: size, price: props.post.price.current.text })) : console.log("you need to pick a size");
+    const img = data.media.images[1].url;
+    const imgURL = `https://${img}`;
+    const name = data.name.slice(11).toUpperCase();
+    size ? mySetBask(myBask.concat({ name: name, img: imgURL, size: size, price: data.price.current.text })) : console.log("you need to pick a size");
   }
 
 

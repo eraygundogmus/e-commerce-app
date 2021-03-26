@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard"
 import { useState, useContext } from "react";
 import Header from "../components/Header"
 import Basket from "../components/Basket"
-import { myContext } from "./_app"
+import { myContext } from "../components/context"
 
 
 
@@ -17,7 +17,6 @@ export default function Home(props) {
        <ProductCard props={props} />
       <Basket/>
       </div>
-
     </div>
   )
 }

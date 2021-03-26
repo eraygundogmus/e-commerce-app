@@ -1,10 +1,11 @@
 import '../styles/globals.scss'
 import React , {useState,useEffect } from "react"
+import {myContext } from "../components/context"
 
 
 
 
-export const myContext = React.createContext()
+
 
 function MyApp({ Component, pageProps }) {
   const [bask, setBask ] = useState([])

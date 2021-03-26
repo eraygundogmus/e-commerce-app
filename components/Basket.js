@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import StorefrontIcon from '@material-ui/icons/Storefront';
-import { myContext } from "../pages/_app"
+import { myContext } from "./context"
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';

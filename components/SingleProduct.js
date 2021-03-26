@@ -12,7 +12,7 @@ function SingleProduct(props) {
         <div className="singleproduct">
             <Carousel  thumbWidth="15%">
             {images.map((image) => (
-                <img src={`https://${image.url}`}/>
+                <img key={image.url} src={`https://${image.url}`}/>
             ))}
             </Carousel>
         </div>
