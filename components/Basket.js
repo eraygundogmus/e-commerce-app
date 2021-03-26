@@ -10,8 +10,6 @@ import Button from '@material-ui/core/Button';
 function Basket() {
     const basket = useContext(myContext).bask
     const setBasket = useContext(myContext).setBask
-
-
     const deleteItem = index => {
         const filter = basket.filter((item, itemIndex) => index !== itemIndex)
         return setBasket([...filter])
@@ -28,13 +26,13 @@ function Basket() {
                 {basket.length == 0 ? 
                 <div><p> Your cart is empty</p> </div> : 
                 basket.map((cart, index) => 
-                (<div className="basket_item">
-                    <img className="basket_item_img" src={cart.img}
+                (<div key={`123${index}`}className="basket_item">
+                    <img className="basket_item_img" src={cart.img} key={`12423${cart.img}23${index}`}
                     alt=""/> 
-                    <p className="basket_item_name">{cart.name}</p>
-                    <h3>{cart.size}, {cart.price}</h3>
-                    <IconButton  onClick={e => deleteItem(index)} color="primary" aria-label="delete" >
-                        <DeleteIcon/>
+                    <p key={`124${cart.name}${cart.price}${index}`}className="basket_item_name">{cart.name}</p>
+                    <h3 key={`1244${cart.name}${cart.price}455332${index}`}>{cart.size}, {cart.price}</h3>
+                    <IconButton key={`4646${cart.name}${index}`} onClick={e => deleteItem(index)} color="primary" aria-label="delete" >
+                        <DeleteIcon key={`fuck${index}`}/>
                     </IconButton>
                 </div>)
                 )}

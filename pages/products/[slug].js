@@ -12,6 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 
+
 const useStyles = makeStyles((theme) => ({
   button: {
     display: 'block',
@@ -24,16 +25,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Products(props) {
+  const contx = React.useContext(myContext)
+  const [data, setData] = useState()
   const classes = useStyles();
   const [size, setSize] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const mySetBask = useContext(myContext).setBask
-  const myBask = useContext(myContext).bask
-  const [data, setData] = useState()
+  const mySetBask = contx.setBask
+  const myBask = contx.bask
+  const [image, setImage] = useState()
+  const [myProps, setProps] = useState()
 
   useEffect(() => {
-    setData(props.post)
+    setProps(props)
+  },[])
+
+
+
+  useEffect(() => {
+    setData(props.name)
   }, [])
+
+  useEffect(() => {
+    setImage(props.img)
+
+  }, [])
+
 
   const handleChange = (event) => {
     setSize(event.target.value);
@@ -50,10 +66,10 @@ export default function Products(props) {
 
 
   const onClickHandler = (event) => {
-    const img = data.media.images[1].url;
-    const imgURL = `https://${img}`;
-    const name = data.name.slice(11).toUpperCase();
-    size ? mySetBask(myBask.concat({ name: name, img: imgURL, size: size, price: data.price.current.text })) : console.log("you need to pick a size");
+    const img = image
+    const name = data
+    const price = props.post.price.current ? props.post.price.current.text : null
+    size ? mySetBask(myBask.concat({ name: name, img: img, size: size, price: price })) : console.log("you need to pick a size");
   }
 
 
@@ -63,8 +79,8 @@ export default function Products(props) {
       <div className="hero">
         <SingleProduct props={props} />
           <div className="product-info">
-            <h4>{props.post.name.slice(11).toUpperCase()}</h4>
-            <h3>{props.post.price.current.text}</h3>
+            <h4>{data}</h4>
+            <h3>{props.post.price.current ? props.post.price.current.text : null}</h3>
             <p>{props.post.info.aboutMe  ? props.post.info.aboutMe.replace(/(<([^>]+)>)/gi, "") : null}</p>
             <p>{props.post.info.sizeAndFit ? props.post.info.sizeAndFit.replace(/(<([^>]+)>)/gi, "") : null}</p>
             <div>
@@ -100,15 +116,16 @@ export async function getStaticPaths() {
     const res = await fetch('https://asos2.p.rapidapi.com/products/list?store=2&categoryId=27871&limit=48&offset=0&currency=USD&sizeSchema=US&sort=freshness&lang=en-US&country=US', 
     {method: 'GET',
     headers:{
-      "x-rapidapi-key": "2c1cbff938msh5243e6f1bfc5e69p13753ajsn18e03b26e5dc",
+      "x-rapidapi-key": "14caa9b1dfmshd63ef10b7f0284cp1d0e94jsnae451078aa47",
       "x-rapidapi-host": "asos2.p.rapidapi.com",
       "useQueryString": true
     },
   })
-    const posts = await res.json()
-    
+    const postData = await res.json()
+    const posts = postData.products
+
     return {
-    paths: posts.products.map(product => {
+    paths: posts.map(product => {
         return { params : { slug: `${slug(product.name)}-${product.id}` }}
     }),
       fallback: false
@@ -121,15 +138,17 @@ export async function getStaticProps(params) {
     const res = await fetch(`https://asos2.p.rapidapi.com/products/detail?id=${id}&sizeSchema=US&store=US&lang=en-US&currency=USD`, 
     {method: 'GET',
     headers:{
-      "x-rapidapi-key": "2c1cbff938msh5243e6f1bfc5e69p13753ajsn18e03b26e5dc",
+      "x-rapidapi-key": "14caa9b1dfmshd63ef10b7f0284cp1d0e94jsnae451078aa47",
       "x-rapidapi-host": "asos2.p.rapidapi.com",
-      "useQueryString": true
     },
-  })
+  }).catch(err => {console.log(err)})
     const post = await res.json()
+    const name =  post.name ? post.name.slice(11).toUpperCase() : null
+    const imgURL = post.media ? post.media.images[0].url : null
+    const img = `https://${imgURL}`
 
 
   return {
-    props: {post},
+    props: {post, name, img},
   }
 }
