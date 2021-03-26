@@ -1,13 +1,20 @@
 import React from "react"
 import ProductCard from "../components/ProductCard"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Basket from "../components/Basket"
+import { myContext } from "./_app"
+
+
+
+
+
 
 export default function Home(props) {
   const [basket,setBasket] = useState([])
-
+  const deger = useContext(myContext)
+  console.log(deger)
 
   return (
     <div className="app">

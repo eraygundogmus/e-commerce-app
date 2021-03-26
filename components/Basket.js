@@ -1,6 +1,5 @@
 import React from 'react'
 import StorefrontIcon from '@material-ui/icons/Storefront';
-import { Card } from '@material-ui/core';
 
 function Basket(props) {
     return (
@@ -10,7 +9,7 @@ function Basket(props) {
                     <StorefrontIcon className="icon" fontSize="large"/> 
                 </div>
                     <h4>Your Cart</h4>
-                {props.basket.length == 0 ? 
+{/*                 {props.basket.length == 0 ? 
                 <div><p> Your cart is empty</p> </div> : 
                 props.basket.map((cart) => 
                 (<div>
@@ -18,7 +17,7 @@ function Basket(props) {
                     <img src={cart.img}
                     alt=""/>
                 </div>)
-                )}
+                )} */}
             </div>
         </div>
     )

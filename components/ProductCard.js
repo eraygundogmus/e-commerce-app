@@ -1,4 +1,4 @@
-import React, { useEffect }from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import slug from "slug"
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,7 +24,6 @@ const useStyles = makeStyles({
 function ProductCard(props) {
     const prod = props.props.posts.products
     const categ = props.props.categories
-    console.log(props)
     const classes = useStyles();
 
 
@@ -51,22 +50,18 @@ function ProductCard(props) {
                         <Typography gutterBottom variant="subtitle2" component="h3">                            
                         {`${product.name.slice(11).toUpperCase().slice(0,35)}...`}
                         </Typography>
-    {/*                 <Typography variant="body2" color="textSecondary" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
-                        </Typography> */}
                         <Typography variant="body2" color="textSecondary" component="p">
                         {product.price.current.text}                         Left: {product.price.current.value}
                         </Typography>
                         </CardContent>
                         </CardActionArea>
                         <CardActions>
-                        <Button size="small" color="primary">
+{/*                         <Button size="small" color="primary">
                         Add to basket
                         </Button>
                         <Button size="small" color="primary">
                         Details
-                        </Button>
+                        </Button> */}
                         </CardActions>
                 </Card>
                 </Grid>

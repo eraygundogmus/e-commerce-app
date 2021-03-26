@@ -1,12 +1,20 @@
 import React from "react"
 import { useState } from "react";
 import slug from "slug";
+import Header from "../../components/Header"
+import Basket from "../../components/Basket"
 
 export default function Products(props) {
+  console.log(props)
   return (
     <div className="app">
-      <h3>I am building an e-commerce app</h3>
+      <Header/>
+      <div className="hero">
+        <h3>I am building an e-commerce app</h3>
       <h4>{props.post.name}</h4>
+      <Basket basket={props.basket}/>
+      </div>
+
     </div>
   )
 }
